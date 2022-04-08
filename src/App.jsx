@@ -1,6 +1,7 @@
 import Home from "./Pages/Home";
 import Navbar from "./Components/Navbar";
 import styled from "styled-components"; 
+import ProductList from "./Components/ProductList";
 
 
 
@@ -13,7 +14,7 @@ const Container = styled.div`
 const App = () => {
   return <div>
     <Container>
-      <Home></Home>
+     <ProductList/>
       
     </Container>
   

@@ -39,3 +39,48 @@ export const categories = [
         title: "Tshirts",
     },
 ]
+
+export const popularProducts = [
+    {
+        id: 1,
+        img: "https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2R1Y3R8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60",
+    },
+    {
+        id: 2,
+        img: "https://assets-global.website-files.com/600fe6e1ff56087409a9f096/605b5a558848493df14d2d13_ecommerce-product-photography.jpg",
+    },
+    {
+        id: 3,
+        img: "https://assets-global.website-files.com/600fe6e1ff56087409a9f096/605b5a558848493df14d2d13_ecommerce-product-photography.jpg",   
+    },
+    {
+        id: 4,
+        img: "https://assets-global.website-files.com/600fe6e1ff56087409a9f096/605b5a558848493df14d2d13_ecommerce-product-photography.jpg",
+    },
+    {
+        id: 5,
+        img: "https://assets-global.website-files.com/600fe6e1ff56087409a9f096/605b5a558848493df14d2d13_ecommerce-product-photography.jpg",
+    },
+    {
+        id: 6,
+        img: "https://assets-global.website-files.com/600fe6e1ff56087409a9f096/605b5a558848493df14d2d13_ecommerce-product-photography.jpg",
+    },
+    {
+        id: 7,
+        img: "https://assets-global.website-files.com/600fe6e1ff56087409a9f096/605b5a558848493df14d2d13_ecommerce-product-photography.jpg",
+    },
+    {
+        id: 8,
+        img: "https://assets-global.website-files.com/600fe6e1ff56087409a9f096/605b5a558848493df14d2d13_ecommerce-product-photography.jpg",   
+    },
+   
+
+    
+]
+
+
+
+
+
+
+
