@@ -27,7 +27,9 @@ const FilterText = styled.span`
 `
 
 const Select = styled.select`
-    
+    padding: 10px;
+    font-weight: 600;
+    margin-right: 20px;
 `
 
 const Option = styled.option`
@@ -50,11 +52,24 @@ const ProductList = () => {
                         <Option>Blue</Option>
                         <Option>Yellow</Option>
                         <Option>Green</Option>
-                       
+                    </Select>
 
+                    <Select>
+                        <Option selected disabled>Size</Option>
+                        <Option>XS</Option>
+                        <Option>S</Option>
+                        <Option>M</Option>
+                        <Option>L</Option>
+                        <Option>XL</Option>
                     </Select>
                 </Filter>
-                <Filter><FilterText>Sort Products:</FilterText></Filter>
+                <Filter><FilterText>Sort Products:</FilterText>
+                <Select>
+                <Option selected disabled>Newest</Option>
+                        <Option>Price (asc)</Option>
+                        <Option>Price (desc)</Option>
+                </Select>
+                </Filter>
             </FilterContainer>
             <Products></Products>
             <NewsLetter></NewsLetter>
