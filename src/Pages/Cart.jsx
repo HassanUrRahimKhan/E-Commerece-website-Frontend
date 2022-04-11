@@ -4,6 +4,8 @@ import Navbar from '../Components/Navbar';
 import styled from 'styled-components';
 import Footer from '../Components/Footer';
 import bg from "../Assets/PngItem_2409185.png";
+import Add from '@mui/icons-material/Add';
+import Remove from '@mui/icons-material/Remove';
 
 const Container =styled.div``
 
@@ -11,7 +13,7 @@ const Wrapper =styled.div`
     padding: 20px;
 `
 
-const Title =styled.div`
+const Title =styled.h1`
     font-weight: 300;
     text-align: center;
 `
@@ -61,19 +63,54 @@ const Product = styled.div`
 
 const ProductDetail = styled.div`
     flex: 2;
+    display: flex;
 `
 const Image = styled.img`
-   width: 400px;
-   height: 200px;
+   width: 200px;
+   
 `
-const Details = styled.div``
+const Details = styled.div`
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+`
 const ProductName = styled.span``
+
 const ProductId = styled.span``
-const ProductColor = styled.div``
+
+const ProductColor = styled.div`
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: ${props=>props.color };
+`
+
 const ProductSize  = styled.span``
+
 const PriceDetail = styled.div`
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 `
+const ProductAmountContainer = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+`
+const ProductAmount = styled.div`
+    font-size: 24px;
+    margin: 5px;
+`
+const ProductPrice = styled.div`
+    font-size: 30px;
+    font-weight: 200;
+`
+
 
 
 
@@ -100,12 +137,37 @@ const Cart = () => {
                             <Details>
                                 <ProductName><b>Product:</b> JESSIE THUNDER SHOES </ProductName>
                                 <ProductId><b>ID:</b>80983092183</ProductId>
-                                <ProductColor></ProductColor>
+                                <ProductColor color='black'></ProductColor>
                                 <ProductSize><b>Size:</b> 37.5</ProductSize>
                             </Details>
                         </ProductDetail>
                         <PriceDetail>
-                            price
+                           <ProductAmountContainer>
+                               <Add/>
+                               <ProductAmount>2</ProductAmount>
+                               <Remove/>
+                           </ProductAmountContainer>
+                           <ProductPrice>$ 30</ProductPrice>
+                        </PriceDetail>
+                    </Product>
+
+                    <Product>
+                        <ProductDetail>
+                            <Image src={bg}></Image>
+                            <Details>
+                                <ProductName><b>Product:</b> JESSIE THUNDER SHOES </ProductName>
+                                <ProductId><b>ID:</b>80983092183</ProductId>
+                                <ProductColor color='black'></ProductColor>
+                                <ProductSize><b>Size:</b> 37.5</ProductSize>
+                            </Details>
+                        </ProductDetail>
+                        <PriceDetail>
+                           <ProductAmountContainer>
+                               <Add/>
+                               <ProductAmount>2</ProductAmount>
+                               <Remove/>
+                           </ProductAmountContainer>
+                           <ProductPrice>$ 30</ProductPrice>
                         </PriceDetail>
                     </Product>
                 </Info>
