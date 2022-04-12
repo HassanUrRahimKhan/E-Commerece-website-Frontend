@@ -4,6 +4,12 @@ import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Badge } from "@mui/material";
+
+const Container = styled.div`
+  height: 60px;
+
+`
+
 const Wrapper = styled.div`
   padding: 10px 20px;
   display: flex;
@@ -54,7 +60,8 @@ const MenuItem = styled.div`
 `
 const Navbar = () => {
   return (
-    <Wrapper>
+    <Container>
+        <Wrapper>
        <Left>
          <Language>EN</Language>
          <SearchContainer>
@@ -73,6 +80,7 @@ const Navbar = () => {
          </MenuItem>
        </Right>
       </Wrapper>
+    </Container>
   )
 }
 
