@@ -4,6 +4,7 @@ import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { useState } from 'react';
 import { sliderItems } from '../Data';
+import { mobile } from '../reponsive';
 
 const Container = styled.div`
     width: 100%;
@@ -11,6 +12,7 @@ const Container = styled.div`
     display: flex;
     position: relative;
     overflow: hidden;
+    ${mobile({display:"none"})}
 `
 const Arrow = styled.div`
     width: 50px;
@@ -125,7 +127,7 @@ const Slider = () => {
                 ))}
 
             </Wrapper>
-            <Arrow direction="right" onClick={() => handleClick("left")}>
+            <Arrow direction="right" onClick={() => handleClick("right")}>
                 <ArrowRightIcon></ArrowRightIcon>
 
             </Arrow>

@@ -36,42 +36,42 @@ export const categories = [
     {
         id: 3,
         img: "https://images.pexels.com/photos/6347892/pexels-photo-6347892.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        title: "Tshirts",
+        title: " Men Tshirts",
     },
 ]
 
 export const popularProducts = [
     {
         id: 1,
-        img: "https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2R1Y3R8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60",
+        img: "https://global-uploads.webflow.com/5d556af3fe21d65f602dca94/5de6ad984d802a51a849088d_Kw31E30G6qYy-p-500.png",
     },
     {
         id: 2,
-        img: "https://assets-global.website-files.com/600fe6e1ff56087409a9f096/605b5a558848493df14d2d13_ecommerce-product-photography.jpg",
+        img: "https://global-uploads.webflow.com/5d556af3fe21d65f602dca94/5dec1f7e45001e15bbd6ace3_3zy1pwvBnmaK-p-500.png",
     },
     {
         id: 3,
-        img: "https://assets-global.website-files.com/600fe6e1ff56087409a9f096/605b5a558848493df14d2d13_ecommerce-product-photography.jpg",   
+        img: "https://global-uploads.webflow.com/5d556af3fe21d65f602dca94/5d8a559fb57cf257d279972c_15b1456340f872660fd8cb9c48db7265-p-500.png",   
     },
     {
         id: 4,
-        img: "https://assets-global.website-files.com/600fe6e1ff56087409a9f096/605b5a558848493df14d2d13_ecommerce-product-photography.jpg",
+        img: "https://global-uploads.webflow.com/5d556af3fe21d65f602dca94/5de6b108ad4032fb5b9a330a_kqKnO3wDnlvQ.png",
     },
     {
         id: 5,
-        img: "https://assets-global.website-files.com/600fe6e1ff56087409a9f096/605b5a558848493df14d2d13_ecommerce-product-photography.jpg",
+        img: "https://global-uploads.webflow.com/5d556af3fe21d65f602dca94/5de6afbf3516e609c1ce3c65_Mab1K0LwrKXm-p-500.png",
     },
     {
         id: 6,
-        img: "https://assets-global.website-files.com/600fe6e1ff56087409a9f096/605b5a558848493df14d2d13_ecommerce-product-photography.jpg",
+        img: "https://global-uploads.webflow.com/5d556af3fe21d65f602dca94/5dec1f6445001ef954d6a225_oQR1y7XA69NJ-p-500.png",
     },
     {
         id: 7,
-        img: "https://assets-global.website-files.com/600fe6e1ff56087409a9f096/605b5a558848493df14d2d13_ecommerce-product-photography.jpg",
+        img: "https://global-uploads.webflow.com/5d556af3fe21d65f602dca94/5de6af6d4aae0a9175834ece_Qe7nYMLGnKd2-p-500.png",
     },
     {
         id: 8,
-        img: "https://assets-global.website-files.com/600fe6e1ff56087409a9f096/605b5a558848493df14d2d13_ecommerce-product-photography.jpg",   
+        img: "https://global-uploads.webflow.com/5d556af3fe21d65f602dca94/5dc1ae42a942542edb3b93bb_d05ffe640f6ca8c9ddb57fdd1954253a-p-500.png",   
     },
    
 

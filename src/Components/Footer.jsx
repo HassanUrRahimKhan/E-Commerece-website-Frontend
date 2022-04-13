@@ -7,9 +7,10 @@ import PinterestIcon from '@mui/icons-material/Pinterest';
 import LocationOn from '@mui/icons-material/LocationOn';
 import Phone from '@mui/icons-material/Phone';
 import MailOutline from '@mui/icons-material/MailOutline';
-
+import { mobile } from '../reponsive';
 const Container = styled.div`
   display: flex;
+  ${mobile({flexDirection:"column"})}
 `
 
 const ContactItem = styled.div`
@@ -56,6 +57,7 @@ const Center = styled.div`
 
   flex: 1;
   padding: 20px;
+  ${mobile({display:"none"})}
   
 `
 
@@ -79,6 +81,7 @@ const ListItem = styled.li`
 const Right = styled.div`
   flex: 1;
   padding: 20px;
+  ${mobile({backgroundColor:"#fff8f8"})}
 `
 
 const Footer = () => {
