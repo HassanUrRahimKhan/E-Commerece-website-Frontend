@@ -6,7 +6,11 @@ import Product from "./Pages/Product";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import Cart from "./Pages/Cart"
-
+import {
+  Navigate,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 
 const Container = styled.div`
@@ -16,9 +20,19 @@ const Container = styled.div`
 
 
 const App = () => {
+  const user = true;
   return <div>
     <Container>
-    <Cart/>
+      <Routes>
+      <Route path="/" element={<Home />}/>
+        <Route path="/products/:category" element={<ProductList />}/>
+        <Route path="/product/:Id" element={<Product/>}/>
+        <Route path="/login" element={user ? <Navigate replace to="/" /> : <Login/>}/>
+        <Route path="/register" element={user ? <Navigate replace to="/" /> : <Register/>}/>
+        <Route path="/cart" element={<Cart />}/>
+      </Routes>
+    
+    
       
     </Container>
   

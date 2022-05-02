@@ -1,5 +1,6 @@
 // import { Button } from '@mui/material';
 import React from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { mobile } from './reponsive';
 
@@ -45,11 +46,13 @@ const Button = styled.button`
 const CategoryItem = ({item}) => {
   return (
     <Container>
+      <Link to={`/products/${item.cat}`}>
       <Image src={item.img}></Image>
       <Info>
         <Title>{item.title}</Title>
         <Button>SHOP NOW</Button>
       </Info>
+      </Link>
     </Container>
   )
 }

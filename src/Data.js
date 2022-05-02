@@ -27,16 +27,20 @@ export const categories = [
         id: 1,
         img: "https://images.pexels.com/photos/1078958/pexels-photo-1078958.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         title: "KURTI STYLE",
+        cat:"women"
     },
     {
         id: 2,
         img: "https://images.pexels.com/photos/2383856/pexels-photo-2383856.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         title: "FORMAL WEAR",
+        cat:"coat",
+        
     },
     {
         id: 3,
         img: "https://images.pexels.com/photos/6347892/pexels-photo-6347892.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         title: " Men Tshirts",
+        cat:"jeans"
     },
 ]
 
