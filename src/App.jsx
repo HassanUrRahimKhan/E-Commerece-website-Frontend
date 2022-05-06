@@ -24,7 +24,8 @@ const App = () => {
   return <div>
     <Container>
       <Routes>
-      <Route path="/" element={<Home />}/>
+      <Route  path="/" element={<Home />}/>
+      <Route  path="/products" element={<ProductList/>}/>
         <Route path="/products/:category" element={<ProductList />}/>
         <Route path="/product/:Id" element={<Product/>}/>
         <Route path="/login" element={user ? <Navigate replace to="/" /> : <Login/>}/>

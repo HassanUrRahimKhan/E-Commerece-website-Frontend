@@ -12,30 +12,80 @@ const Container = styled.div`
     justify-content: space-between;
 `
 
-export const Products = (cat,filters,sort ) => {
-  
-const [products, setProducts] = useState([]);
-const [filteredProducts, setFilteredProducts] = useState([]);
+export const Products = ({cat, filters, sort}) => {
+// console.log("🚀 ~ file: Products.jsx ~ line 16 ~ Products ~ filters", filters)
 
-useEffect(()=>{
-    const getProducts = async () =>{
+  const [products, setProducts] = useState([]);
+  // console.log("🚀 ~ file: Products.jsx ~ line 18 ~ Products ~ products", products)
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  // console.log("🚀 ~ file: Products.jsx ~ line 19 ~ Products ~ filteredProducts", filteredProducts)
+  
+ 
+
+  useEffect(() => {
+    const getProducts = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/products")
-        console.log(res)
-        
-      } catch (error) {}
+        const res = await axios.get(
+          cat
+            ? `http://localhost:5000/api/products?categories=${cat}`
+            : "http://localhost:5000/api/products"
+        );
+        setProducts(res.data);
+      } catch (err) {
+        console.log(err)
+      }
     };
     getProducts();
+  }, [cat]);
 
-},[cat])
+  useEffect(() => {
+    cat &&
+      setFilteredProducts(
+        products.filter((item) =>
+          Object.entries(filters).every(([key, value]) =>
+            item[key].includes(value)
+          )
+        )
+      );
+     
+  }, [products, cat, filters]);
 
-
-
+  useEffect(() => {
+    if (sort === "newest") {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => a.createdAt - b.createdAt)
+      );
+    } else if (sort === "asc") {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => a.price - b.price)
+      );
+    } else {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => b.price - a.price)
+      );
+    }
+  }, [sort]);
+  
   return (
     <Container>
-        {popularProducts.map((item)=>(
-            <Product item={item} key={item.id}></Product>
-        ))}
+
+      {cat ? filteredProducts.map((item) => (
+        
+        
+        <Product item={item} key={item.id}></Product>
+  
+      )) :  products
+          .slice(0,8).map((item) => (
+        
+        
+        <Product item={item} key={item.id}></Product>
+  
+      )) }
+     
+        
+        
+  
+     
     </Container>
   )
 }
