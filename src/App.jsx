@@ -11,6 +11,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Success from "./Pages/Success";
 
 
 const Container = styled.div`
@@ -31,6 +32,8 @@ const App = () => {
         <Route path="/login" element={user ? <Navigate replace to="/" /> : <Login/>}/>
         <Route path="/register" element={user ? <Navigate replace to="/" /> : <Register/>}/>
         <Route path="/cart" element={<Cart />}/>
+        <Route path="/success" element={<Success />}/>
+
       </Routes>
     
     

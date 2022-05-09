@@ -9,12 +9,23 @@ import Add from '@mui/icons-material/Add';
 import Remove from '@mui/icons-material/Remove';
 import { maxWidth } from '@mui/system';
 import { mobile } from '../reponsive';
+import { useSelector } from 'react-redux';
+import StripeCheckout from "react-stripe-checkout";
+import { useState, useEffect } from "react";
+import { userRequest } from '../requestMethods';
+import { useNavigate } from 'react-router-dom';
+
+// const Stripe = require('stripe');
+// const stripe = Stripe('sk_test_51KqYGFCpPi8IDrPcWDFmOeavzJ2aUoIVZsBfPQ7qfcBUot2LNly3znmex7cPjNpqALiYID5gFMBq92RIiJS93mfz00fCqacLOE');
+
+const KEY = "pk_test_51KqYGFCpPi8IDrPczZurFc8o1tllnhNEDnxigfIZTAZluptrCjY6q5CqeLiGhBLpwlCbEDIrjIGSfZmk1mNRUEsC00gyv1V4H6";
+
 
 const Container = styled.div``
 
 const Wrapper = styled.div`
     padding: 20px;
-    ${mobile({padding:"10px"})}
+    ${mobile({ padding: "10px" })}
 `
 
 const Title = styled.h1`
@@ -32,7 +43,7 @@ const Top = styled.div`
 const Bottom = styled.div`
     display: flex;
     justify-content: space-between;
-    ${mobile({flexDirection:"column"})}
+    ${mobile({ flexDirection: "column" })}
 `
 
 const TopButton = styled.button`
@@ -44,7 +55,7 @@ const TopButton = styled.button`
     color: ${props => props.type === "filled" && "white"};
     `
 const TopTexts = styled.div`
-    ${mobile({display:"none"})}
+    ${mobile({ display: "none" })}
 `
 
 const TopText = styled.span`
@@ -76,8 +87,8 @@ const SummaryItem = styled.div`
     margin: 20px 0px;
     display: flex;
     justify-content: space-between;
-    font-weight: ${props=>props.type === "total" && "500"};
-    font-size: ${props=>props.type === "total" && "24px"};
+    font-weight: ${props => props.type === "total" && "500"};
+    font-size: ${props => props.type === "total" && "24px"};
 `
 const SummaryItemPrice = styled.span`
     
@@ -94,7 +105,7 @@ const Product = styled.div`
     justify-content: space-between;
     padding-bottom: 70px;
     margin-top: 40px;
-    ${mobile({flexDirection:"column"})}
+    ${mobile({ flexDirection: "column" })}
 `
 
 const ProductDetail = styled.div`
@@ -143,12 +154,12 @@ const ProductAmountContainer = styled.div`
 const ProductAmount = styled.div`
     font-size: 24px;
     margin: 5px;
-    ${mobile({margin:"5px 15px"})}
+    ${mobile({ margin: "5px 15px" })}
 `
 const ProductPrice = styled.div`
     font-size: 30px;
     font-weight: 200;
-    ${mobile({marginBottom:"20px"})}
+    ${mobile({ marginBottom: "20px" })}
 `
 
 const HR = styled.hr`
@@ -161,6 +172,29 @@ const HR = styled.hr`
 
 
 const Cart = () => {
+    const cart = useSelector(state => state.cart);
+    const navigate = useNavigate();
+    const [stripeToken, setStripeToken] = useState(null);
+    const onToken = (token) => {
+        setStripeToken(token);
+        
+    };
+    useEffect(() => {
+
+        const makeRequest = async () => {
+            try {
+                const res = await userRequest.post("/checkout/payment", {
+                    tokenId: stripeToken.id,
+                    amount: cart.total * 100,
+
+ 
+                })
+                navigate("/success", { data: res.data });
+               
+            } catch (error) {}  
+        }
+        stripeToken && makeRequest();
+    }, [stripeToken, cart.total, navigate])
     return (
         <Container>
             <Navbar></Navbar>
@@ -177,53 +211,35 @@ const Cart = () => {
                 </Top>
                 <Bottom>
                     <Info>
-                        <Product>
+                        {cart.products.map(product => (<Product>
                             <ProductDetail>
                                 <div style={{ display: 'flex', width: 200, alignItems: "center" }}>
-                                    <Image src={bg} style={{ width: 200, height: 110 }}></Image>
+                                    <Image src={product.img} style={{ width: 200, height: 110 }}></Image>
                                 </div>
                                 <Details>
-                                    <ProductName><b>Product:</b> JESSIE THUNDER SHOES </ProductName>
-                                    <ProductId><b>ID:</b>4742984727</ProductId>
-                                    <ProductColor color='black'></ProductColor>
-                                    <ProductSize><b>Size:</b> 47.5</ProductSize>
+                                    <ProductName><b>Product:</b> {product.title} </ProductName>
+                                    <ProductId><b>ID:</b>{product._id}</ProductId>
+                                    <ProductColor color={product.color}></ProductColor>
+                                    <ProductSize><b>Size:</b> {product.size}</ProductSize>
                                 </Details>
                             </ProductDetail>
                             <PriceDetail>
                                 <ProductAmountContainer>
                                     <Add />
-                                    <ProductAmount>2</ProductAmount>
+                                    <ProductAmount>{product.quantity}</ProductAmount>
                                     <Remove />
                                 </ProductAmountContainer>
-                                <ProductPrice>$ 40</ProductPrice>
+                                <ProductPrice>$ {product.price * product.quantity}</ProductPrice>
                             </PriceDetail>
-                        </Product>
+                        </Product>))}
                         <HR />
-                        <Product>
-                            <ProductDetail>
-                                <Image src={bg2}></Image>
-                                <Details>
-                                    <ProductName><b>Product:</b> Denim Tshirt </ProductName>
-                                    <ProductId><b>ID:</b>80983092183</ProductId>
-                                    <ProductColor color='black'></ProductColor>
-                                    <ProductSize><b>Size:</b> 37.5</ProductSize>
-                                </Details>
-                            </ProductDetail>
-                            <PriceDetail>
-                                <ProductAmountContainer>
-                                    <Add />
-                                    <ProductAmount>2</ProductAmount>
-                                    <Remove />
-                                </ProductAmountContainer>
-                                <ProductPrice>$ 30</ProductPrice>
-                            </PriceDetail>
-                        </Product>
+
                     </Info>
                     <Summary>
                         <SummaryTitle>Order Summary</SummaryTitle>
                         <SummaryItem>
                             <SummaryItemText>Subtotal</SummaryItemText>
-                            <SummaryItemPrice>$ 80</SummaryItemPrice>
+                            <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
                         </SummaryItem>
 
                         <SummaryItem>
@@ -238,10 +254,36 @@ const Cart = () => {
 
                         <SummaryItem type="total">
                             <SummaryItemText>Total</SummaryItemText>
-                            <SummaryItemPrice>$ 80</SummaryItemPrice>
+                            <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
                         </SummaryItem>
 
-                        <Button>CHECKOUT NOW</Button>
+                        <StripeCheckout name="Ivolvo Shop"
+                            image="https://image.shutterstock.com/z/stock-vector-avatar-man-and-shopping-and-ecommerce-icon-489296014.jpg"
+                            billingAddress
+                            shippingAddress
+                            description={`Your total is $ ${cart.total}`}
+                            amount={cart.total * 100}
+                            token={onToken}
+                            stripeKey={KEY}>
+
+
+                            <button
+                                style={{
+                                    border: "none",
+                                    width: 120,
+                                    borderRadius: 5,
+                                    padding: "20px",
+                                    backgroundColor: "black",
+                                    color: "white",
+                                    fontWeight: "600",
+                                    cursor: "pointer",
+
+                                }}
+                            >
+                                Pay Now
+
+                            </button>
+                        </StripeCheckout>
                     </Summary>
                 </Bottom>
             </Wrapper>

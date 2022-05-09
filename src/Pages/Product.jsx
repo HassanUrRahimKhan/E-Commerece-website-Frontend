@@ -68,7 +68,11 @@ const FilterColor = styled.div`
     background-color: ${props => props.color};
     margin: 0px 5px;
     cursor: pointer;
-    
+    &:hover{
+        border: 2px solid gold ;
+        
+    }
+     
 `
 const FilterSize = styled.select`
     margin-left: 10px;
@@ -161,7 +165,7 @@ const Product = () => {
                 <InfoContainer>
                     <Title>{product.title}</Title>
                     <Desc>{product.desc}</Desc>
-                    <Price>{product.price}</Price>
+                    <Price> $ {product.price}</Price>
                     <FilterContainer>
                         <Filter>
                             <FilterTitle>Color</FilterTitle>
