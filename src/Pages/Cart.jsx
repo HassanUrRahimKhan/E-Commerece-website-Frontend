@@ -117,6 +117,7 @@ const Image = styled.img`
    display: flex;
 	justify-content: center;
 	align-items: center;
+ 
     `
 const Details = styled.div`
     padding-left: 20px;
@@ -177,7 +178,7 @@ const Cart = () => {
     const [stripeToken, setStripeToken] = useState(null);
     const onToken = (token) => {
         setStripeToken(token);
-        
+
     };
     useEffect(() => {
 
@@ -187,11 +188,14 @@ const Cart = () => {
                     tokenId: stripeToken.id,
                     amount: cart.total * 100,
 
- 
+
                 })
-                navigate("/success", { data: res.data });
-               
-            } catch (error) {}  
+                navigate("/success", {
+                    stripeData: res.data,
+                    products: cart,
+                });
+
+            } catch (error) { }
         }
         stripeToken && makeRequest();
     }, [stripeToken, cart.total, navigate])
@@ -214,7 +218,7 @@ const Cart = () => {
                         {cart.products.map(product => (<Product>
                             <ProductDetail>
                                 <div style={{ display: 'flex', width: 200, alignItems: "center" }}>
-                                    <Image src={product.img} style={{ width: 200, height: 110 }}></Image>
+                                    <Image src={product.img} style={{ width: 200, height: 200 }}></Image>
                                 </div>
                                 <Details>
                                     <ProductName><b>Product:</b> {product.title} </ProductName>

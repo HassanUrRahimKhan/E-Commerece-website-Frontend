@@ -5,7 +5,8 @@ import ProductList from "./Components/ProductList";
 import Product from "./Pages/Product";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
-import Cart from "./Pages/Cart"
+import Cart from "./Pages/Cart";
+import {useSelector} from "react-redux";
 import {
   Navigate,
   Routes,
@@ -21,7 +22,8 @@ const Container = styled.div`
 
 
 const App = () => {
-  const user = true;
+
+  const user = useSelector(state=>state.user.currentUser)
   return <div>
     <Container>
       <Routes>
